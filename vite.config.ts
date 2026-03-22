@@ -19,5 +19,5 @@ export default defineConfig({
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
-  base: '/data-science-portfolio/', // Required for GitHub Pages
+  base: process.env.GITHUB_ACTIONS === 'true' ? '/Portfolio-Website/' : '/', // Corrected for GH Pages and Vercel compatibility
 })
