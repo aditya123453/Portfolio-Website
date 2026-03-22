@@ -103,13 +103,14 @@ export function Contact() {
                 </motion.a>
               </div>
               
-              <Button 
-                size="lg"
-                className="w-full h-16 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white border-0 text-lg rounded-2xl transition-all font-black shadow-lg shadow-indigo-500/20 group"
+              <a 
+                href="/Aditya_Nandan_CV.pdf" 
+                download="Aditya_Nandan_CV.pdf"
+                className="w-full h-16 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white flex items-center justify-center rounded-2xl transition-all font-black shadow-lg shadow-indigo-500/20 group text-lg"
               >
                 <Download className="mr-3 h-5 w-5 group-hover:animate-bounce" />
                 Download Resume (PDF)
-              </Button>
+              </a>
             </motion.div>
           </div>
         </div>

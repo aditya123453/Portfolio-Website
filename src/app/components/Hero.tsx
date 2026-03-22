@@ -76,14 +76,14 @@ export function Hero() {
                 →
               </motion.span>
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-2 border-white/10 text-white bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 text-base px-10 py-7 rounded-2xl transition-all font-bold"
+            <a 
+              href="/Aditya_Nandan_CV.pdf" 
+              download="Aditya_Nandan_CV.pdf"
+              className="inline-flex items-center justify-center border-2 border-white/10 text-white bg-white/5 backdrop-blur-md hover:bg-white/10 hover:border-white/20 text-base px-10 py-7 rounded-2xl transition-all font-bold group"
             >
-              <Download className="mr-2 h-5 w-5" />
+              <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
               Get CV
-            </Button>
+            </a>
           </motion.div>
         </div>
 
