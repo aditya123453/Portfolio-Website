@@ -55,8 +55,8 @@ export function About() {
           >
             <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-slate-50">
               <img 
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" 
-                alt="Data visualization setup" 
+                src="/profile.jpg" 
+                alt="Aditya Nandan - Data Scientist" 
                 className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-indigo-600/40 to-transparent"></div>

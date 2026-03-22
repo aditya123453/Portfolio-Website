@@ -95,15 +95,19 @@ export function Hero() {
         >
           <div className="relative w-full aspect-square max-w-md mx-auto">
             <div className="absolute inset-0 bg-gradient-to-tr from-indigo-600 to-fuchsia-600 rounded-3xl rotate-6 blur-2xl opacity-20 animate-pulse"></div>
-            <div className="absolute inset-0 bg-slate-900 border border-white/10 rounded-[2.5rem] shadow-2xl flex items-center justify-center p-8 overflow-hidden group">
-              <div className="grid grid-cols-4 gap-4 w-full h-full opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-                {Array.from({ length: 16 }).map((_, i) => (
-                  <div key={i} className="bg-indigo-500/20 rounded-lg"></div>
-                ))}
+            <div className="absolute inset-0 bg-slate-900 border-4 border-white/20 rounded-[2.5rem] shadow-2xl flex items-center justify-center overflow-hidden group">
+              <img 
+                src="/profile.jpg" 
+                alt="Aditya Nandan" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                <div className="text-white">
+                  <p className="text-sm font-black uppercase tracking-widest mb-1">Aditya Nandan</p>
+                  <p className="text-xs text-indigo-300 font-bold uppercase tracking-widest">Data Scientist</p>
+                </div>
               </div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-[12rem] font-black text-white/5 select-none leading-none">AI</div>
-              </div>
+            </div>
               {/* Floating elements inside the hero box */}
               <motion.div 
                 animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
@@ -122,8 +126,8 @@ export function Hero() {
                 <div className="w-6 h-2 bg-white/20 rounded-full"></div>
               </motion.div>
             </div>
-          </div>
         </motion.div>
+
       </div>
       
       <motion.div 
