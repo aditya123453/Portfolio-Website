@@ -1,65 +1,85 @@
-import { Trophy, Users, Code, BookOpen } from 'lucide-react';
+import { Trophy, Users, Code, BookOpen, Star } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export function Achievements() {
   const achievements = [
     {
       icon: Trophy,
-      title: 'Hackathon Team Leader',
-      description: 'Led a team to 80% project completion in competitive coding hackathon',
-      gradient: 'from-yellow-500 via-orange-500 to-red-500',
-      bgGradient: 'from-yellow-100 to-orange-100'
+      title: 'Hackathon Leadership',
+      description: 'Led a team to 80% project completion in a high-stakes competitive coding hackathon.',
+      gradient: 'from-amber-400 to-orange-500'
     },
     {
       icon: Users,
-      title: 'Team Collaboration',
-      description: 'Built and managed collaborative project teams for data science initiatives',
-      gradient: 'from-blue-500 via-indigo-500 to-purple-500',
-      bgGradient: 'from-blue-100 to-indigo-100'
+      title: 'Strategic Collaboration',
+      description: 'Successfully managed cross-functional teams for data science initiatives and research.',
+      gradient: 'from-blue-400 to-indigo-500'
     },
     {
       icon: Code,
-      title: 'Competitive Programming',
-      description: 'Active participation in coding challenges and algorithmic problem solving',
-      gradient: 'from-purple-500 via-pink-500 to-rose-500',
-      bgGradient: 'from-purple-100 to-pink-100'
+      title: 'Algorithmic Mastery',
+      description: 'Consistently solved complex algorithmic challenges in competitive programming platforms.',
+      gradient: 'from-purple-400 to-pink-500'
     },
     {
       icon: BookOpen,
-      title: 'Tech Writing',
-      description: 'Contributing to technical documentation and knowledge sharing',
-      gradient: 'from-green-500 via-emerald-500 to-teal-500',
-      bgGradient: 'from-green-100 to-emerald-100'
+      title: 'Knowledge Advocacy',
+      description: 'Contributed to technical documentation and shared insights with the developer community.',
+      gradient: 'from-emerald-400 to-teal-500'
     }
   ];
 
   return (
-    <section id="achievements" className="py-24 bg-gradient-to-br from-violet-50 via-fuchsia-50 to-pink-50">
-      <div className="max-w-6xl mx-auto px-8">
-        <h2 className="text-5xl font-bold mb-6 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-          Achievements & Activities
-        </h2>
-        <div className="w-32 h-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mx-auto mb-12 rounded-full"></div>
+    <section id="achievements" className="py-32 bg-white relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="text-center mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-sm font-bold mb-4"
+          >
+            Recognition
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-black mb-6 text-slate-900 tracking-tight"
+          >
+            Beyond the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Code</span>.
+          </motion.h2>
+        </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {achievements.map((achievement, index) => (
-            <div 
+            <motion.div 
               key={index}
-              className={`bg-gradient-to-br ${achievement.bgGradient} p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all border-4 border-white hover:scale-105`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="group bg-slate-50 p-8 rounded-[2.5rem] border border-slate-200/60 shadow-sm hover:shadow-2xl hover:bg-white transition-all duration-500 flex flex-col items-center text-center"
             >
-              <div className="flex items-start">
-                <div className={`p-4 rounded-xl bg-gradient-to-r ${achievement.gradient} mr-5 flex-shrink-0 shadow-lg`}>
-                  <achievement.icon className="h-8 w-8 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">
-                    {achievement.title}
-                  </h3>
-                  <p className="text-gray-700 font-medium text-base">
-                    {achievement.description}
-                  </p>
-                </div>
+              <div className={`p-5 rounded-2xl bg-gradient-to-br ${achievement.gradient} text-white mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500`}>
+                <achievement.icon className="h-8 w-8" />
               </div>
-            </div>
+              
+              <h3 className="text-xl font-black text-slate-900 mb-4 group-hover:text-indigo-600 transition-colors leading-tight">
+                {achievement.title}
+              </h3>
+              <p className="text-slate-500 font-bold leading-relaxed mb-6">
+                {achievement.description}
+              </p>
+              
+              <div className="mt-auto pt-6 border-t border-slate-200/60 w-full flex justify-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-4 w-4 text-amber-400 fill-amber-400" />
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

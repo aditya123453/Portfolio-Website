@@ -1,59 +1,94 @@
-import { Briefcase, Database, Brain } from 'lucide-react';
+import { Briefcase, Database, Brain, Sparkles } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export function Experience() {
+  const experiences = [
+    {
+      title: 'PL/SQL & Data Science Bootcamp',
+      company: 'Lovely Professional University',
+      period: 'Intensive Training',
+      icon: Briefcase,
+      color: 'from-blue-600 to-indigo-600',
+      highlights: [
+        { icon: Database, text: 'Built comprehensive database systems with triggers and stored procedures' },
+        { icon: Brain, text: 'Developed machine learning models for predictive analytics' },
+        { icon: Sparkles, text: 'Integrated ML pipelines with structured databases' }
+      ]
+    }
+  ];
+
   return (
-    <section id="experience" className="py-24 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
-      <div className="max-w-6xl mx-auto px-8">
-        <h2 className="text-5xl font-bold mb-6 text-center bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-          Experience & Training
-        </h2>
-        <div className="w-32 h-2 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 mx-auto mb-12 rounded-full"></div>
+    <section id="experience" className="py-32 bg-slate-50 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-8">
+        <div className="text-center mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-sm font-bold mb-4"
+          >
+            Professional Growth
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-black mb-6 text-slate-900 tracking-tight"
+          >
+            Experience & <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Training</span>.
+          </motion.h2>
+        </div>
         
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-white to-blue-50 p-10 rounded-3xl border-4 border-blue-200 shadow-2xl hover:shadow-3xl transition-all">
-            <div className="flex items-start mb-8">
-              <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 p-5 rounded-2xl mr-6 shadow-xl">
-                <Briefcase className="h-10 w-10 text-white" />
-              </div>
-              <div className="flex-grow">
-                <h3 className="text-3xl font-bold text-gray-800 mb-3">
-                  PL/SQL & Data Science Bootcamp
-                </h3>
-                <p className="text-blue-600 font-bold text-lg mb-2">
-                  Lovely Professional University
-                </p>
-              </div>
-            </div>
-            
-            <div className="space-y-5 ml-24">
-              <div className="flex items-start bg-gradient-to-r from-blue-100 to-cyan-100 p-5 rounded-xl shadow-md hover:shadow-lg transition-all">
-                <div className="bg-gradient-to-r from-blue-500 to-cyan-500 p-2 rounded-lg mr-4">
-                  <Database className="h-6 w-6 text-white" />
-                </div>
-                <p className="text-gray-800 font-medium text-lg">
-                  Built comprehensive database systems with triggers, stored procedures, and functions
-                </p>
-              </div>
+          {experiences.map((exp, index) => (
+            <motion.div 
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="bg-white p-10 md:p-16 rounded-[3rem] border border-slate-200/60 shadow-2xl relative overflow-hidden group"
+            >
+              {/* Decorative background blur */}
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-indigo-500/5 blur-[80px] rounded-full group-hover:bg-indigo-500/10 transition-colors duration-500"></div>
               
-              <div className="flex items-start bg-gradient-to-r from-purple-100 to-pink-100 p-5 rounded-xl shadow-md hover:shadow-lg transition-all">
-                <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-2 rounded-lg mr-4">
-                  <Brain className="h-6 w-6 text-white" />
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-8 relative z-10">
+                <div className="w-20 h-20 rounded-[1.5rem] bg-gradient-to-br from-indigo-600 to-violet-600 text-white flex items-center justify-center shadow-xl transform group-hover:rotate-6 group-hover:scale-110 transition-all duration-500">
+                  <exp.icon className="h-10 w-10" />
                 </div>
-                <p className="text-gray-800 font-medium text-lg">
-                  Developed and deployed machine learning models for predictive analytics
-                </p>
-              </div>
-              
-              <div className="flex items-start bg-gradient-to-r from-indigo-100 to-purple-100 p-5 rounded-xl shadow-md hover:shadow-lg transition-all">
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-500 p-2 rounded-lg mr-4">
-                  <Database className="h-6 w-6 text-white" />
+                
+                <div className="flex-1 text-center md:text-left">
+                  <div className="mb-8">
+                    <h3 className="text-3xl font-black text-slate-900 mb-2 leading-tight group-hover:text-indigo-600 transition-colors">
+                      {exp.title}
+                    </h3>
+                    <div className="flex flex-wrap justify-center md:justify-start gap-4 items-center">
+                      <p className="text-xl font-bold text-slate-500">{exp.company}</p>
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 hidden md:block"></span>
+                      <p className="text-sm font-black text-indigo-500 uppercase tracking-widest">{exp.period}</p>
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 gap-4">
+                    {exp.highlights.map((item, idx) => (
+                      <motion.div 
+                        key={idx}
+                        whileHover={{ x: 10 }}
+                        className="flex items-start gap-4 bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:border-indigo-100 hover:bg-white transition-all duration-300"
+                      >
+                        <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-sm border border-slate-100 group-hover:border-indigo-100 transition-colors">
+                          <item.icon className="h-5 w-5 text-indigo-600" />
+                        </div>
+                        <p className="text-slate-600 font-bold leading-relaxed flex-1">
+                          {item.text}
+                        </p>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
-                <p className="text-gray-800 font-medium text-lg">
-                  Integrated ML pipelines with structured databases for real-time data processing
-                </p>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

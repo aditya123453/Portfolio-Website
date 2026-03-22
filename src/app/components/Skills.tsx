@@ -1,5 +1,6 @@
-import { Code2, Boxes, Wrench, Users } from 'lucide-react';
+import { Code2, Boxes, Wrench, Users, Database, Globe } from 'lucide-react';
 import { Badge } from './ui/badge';
+import { motion } from 'motion/react';
 
 export function Skills() {
   const skillCategories = [
@@ -7,76 +8,99 @@ export function Skills() {
       title: 'Programming',
       icon: Code2,
       skills: ['Python', 'C', 'Java', 'SQL', 'PL/SQL'],
-      color: 'from-blue-500 to-blue-600',
-      bgGradient: 'from-blue-500/10 to-blue-600/10',
-      badgeColor: 'bg-blue-500 text-white hover:bg-blue-600'
+      gradient: 'from-blue-600 to-indigo-600',
+      description: 'Core logic and development'
     },
     {
-      title: 'Libraries & Frameworks',
-      icon: Boxes,
+      title: 'Data Science',
+      icon: Database,
       skills: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'Pandas', 'NumPy', 'Matplotlib', 'Seaborn', 'XGBoost'],
-      color: 'from-purple-500 to-purple-600',
-      bgGradient: 'from-purple-500/10 to-purple-600/10',
-      badgeColor: 'bg-purple-500 text-white hover:bg-purple-600'
+      gradient: 'from-purple-600 to-pink-600',
+      description: 'Modeling and analysis'
     },
     {
-      title: 'Tools & Platforms',
+      title: 'Tools & Cloud',
       icon: Wrench,
       skills: ['AWS', 'Docker', 'Tableau', 'PowerBI', 'Git', 'Jupyter', 'Databricks'],
-      color: 'from-pink-500 to-rose-600',
-      bgGradient: 'from-pink-500/10 to-rose-600/10',
-      badgeColor: 'bg-pink-500 text-white hover:bg-pink-600'
+      gradient: 'from-orange-600 to-red-600',
+      description: 'Infrastructure and viz'
     },
     {
       title: 'Soft Skills',
       icon: Users,
       skills: ['Leadership', 'Collaboration', 'Problem Solving', 'Adaptability'],
-      color: 'from-orange-500 to-amber-600',
-      bgGradient: 'from-orange-500/10 to-amber-600/10',
-      badgeColor: 'bg-orange-500 text-white hover:bg-orange-600'
+      gradient: 'from-emerald-600 to-teal-600',
+      description: 'Team and communication'
     }
   ];
 
   return (
-    <section id="skills" className="py-24 bg-white border-t border-slate-200">
-      <div className="max-w-6xl mx-auto px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-slate-900 tracking-tight">
-            Skills & Technologies
-          </h2>
-          <div className="w-16 h-1 bg-indigo-600 mx-auto rounded-full mb-6"></div>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            My technical toolkit for building end-to-end data science and machine learning solutions.
-          </p>
+    <section id="skills" className="py-32 bg-slate-50 relative overflow-hidden">
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-indigo-500/10 blur-[100px] rounded-full"></div>
+      
+      <div className="max-w-7xl mx-auto px-8 relative z-10">
+        <div className="text-center mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 bg-indigo-100 text-indigo-700 rounded-full text-sm font-bold mb-4"
+          >
+            Capabilities
+          </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl font-black mb-6 text-slate-900 tracking-tight"
+          >
+            Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-violet-600">Expertise</span>.
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-slate-500 max-w-2xl mx-auto font-medium"
+          >
+            A comprehensive toolkit for delivering end-to-end data-driven solutions.
+          </motion.p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {skillCategories.map((category, index) => (
-            <div 
+            <motion.div 
               key={index}
-              className="bg-slate-50 p-8 rounded-xl border border-slate-200 hover:shadow-md transition-shadow"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group bg-white p-8 rounded-[2rem] border border-slate-200/60 shadow-sm hover:shadow-2xl transition-all duration-500 flex flex-col items-center text-center"
             >
-              <div className="flex items-center mb-6">
-                <div className="p-3 rounded-lg bg-indigo-50 border border-indigo-100 mr-4">
-                  <category.icon className="h-6 w-6 text-indigo-600" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-900">
-                  {category.title}
-                </h3>
+              <div className={`p-5 rounded-2xl bg-gradient-to-br ${category.gradient} text-white mb-6 shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
+                <category.icon className="h-8 w-8" />
               </div>
               
-              <div className="flex flex-wrap gap-2">
+              <h3 className="text-xl font-black text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                {category.title}
+              </h3>
+              <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">
+                {category.description}
+              </p>
+              
+              <div className="flex flex-wrap justify-center gap-2 mt-auto">
                 {category.skills.map((skill, idx) => (
                   <Badge 
                     key={idx}
-                    variant="outline"
-                    className="px-3 py-1 text-sm font-medium bg-white text-slate-700 border border-slate-300 hover:bg-slate-100"
+                    className="px-4 py-1.5 text-xs font-bold bg-slate-50 text-slate-600 border border-slate-100 group-hover:bg-indigo-50 group-hover:text-indigo-600 group-hover:border-indigo-100 transition-all rounded-full"
                   >
                     {skill}
                   </Badge>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
